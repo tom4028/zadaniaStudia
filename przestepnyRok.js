@@ -8,18 +8,33 @@ let years = [1974,1900,1985,2000];
 // }
 //wersja callback
 
-function przestepnyRok(years,cb){
+// function przestepnyRok(years,cb){
+//     let lataPrzestepne = [];
+//     years.forEach((year)=>{
+//         year = ((year%4===0 || year%100===0) && year%400 !=0)? lataPrzestepne.push(year):false;
+//     });
+//     if(lataPrzestepne){
+//         cb(lataPrzestepne);
+//     }else{
+//         cb("Error: Brak danych w tablicy...");
+//     }
+// };
+
+// przestepnyRok(years,(lata)=>{
+//     console.log(`Lata przestępne to: ${lata}`);
+// })
+
+//Wersaj Promise
+function przestepnyRok(years){
     let lataPrzestepne = [];
-    years.forEach((year)=>{
-        year = ((year%4===0 || year%100===0) && year%400 !=0)? lataPrzestepne.push(year):false;
-    });
-    if(lataPrzestepne){
-        cb(lataPrzestepne);
-    }else{
-        cb("Error: Brak danych w tablicy...");
-    }
+    return new Promise((resolve,reject)=>{
+        years.forEach((year)=>{
+            year = ((year%4===0 || year%100===0) && year%400 !=0) ? lataPrzestepne.push(year) : false;
+        });
+        if(lataPrzestepne) resolve(lataPrzestepne);
+        reject("Error: Brak lat przestępnychw tablicy...");
+    })
 };
 
-przestepnyRok(years,(lata)=>{
-    console.log(`Lata przestępne to: ${lata}`);
-})
+przestepnyRok(years).then(lata=>console.log(`Lata przestępne to: ${lata}`)).catch(err=>console.log(err));
+
