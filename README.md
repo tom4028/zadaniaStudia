@@ -1,0 +1,2 @@
+# zadaniaStudia
+Zadania z javascript
