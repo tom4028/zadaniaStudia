@@ -24,7 +24,7 @@ let years = [1974,1900,1985,2000];
 //     console.log(`Lata przestępne to: ${lata}`);
 // })
 
-//Wersaj Promise
+//Wersaj Promise 1
 function przestepnyRok(years){
     let lataPrzestepne = [];
     return new Promise((resolve,reject)=>{
